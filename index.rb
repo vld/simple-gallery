@@ -7,7 +7,7 @@ require 'carrierwave/mongoid'
 
 configure do
   Mongoid.configure do |config|
-    name = "app"
+    name = "simple_galery"
     config.master = Mongo::Connection.new.db(name)
     config.persist_in_safe_mode = false
   end
@@ -25,7 +25,7 @@ end
 
 get '/' do
   @images = Image.all
-  haml :'index'
+  haml :index
 end
 
 post '/' do
@@ -36,5 +36,5 @@ end
 
 get '/images/:id' do
   @image = Image.find(params[:id])
-  haml :'show'
+  haml :show
 end
