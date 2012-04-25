@@ -1,0 +1,20 @@
+%h2 Photogallery
+%ul.photogallery
+-for image in @images
+  %li
+    %a{:href => "/images/#{image.id}"}=image.title
+    %a{:href => "/images/#{image.id}"}
+      %img{:src => image.image}
+    
+%h2 Add photo
+%form{:name => "new_image", :id => "new_image", :method => "POST", :enctype => "multipart/form-data"}
+  %p
+    %label Photo title
+    %br
+    %input{:type => "text", :name => "title"}
+  %p
+    %label Image
+    %br
+    %input{:type => "file", :name => "image"}
+  %p
+    %input{:type => "submit", :value => "Save"}
