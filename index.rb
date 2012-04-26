@@ -24,12 +24,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
   
   version :thumb_gray do
-    process :resize_to_fill => [200, 200]
+    process :resize_to_fill => [150, 150]
     process :convert_to_grayscale
   end
   
   version :thumb do
-    process :resize_to_fill => [200, 200]
+    process :resize_to_fill => [150, 150]
     process :merge
   end
   
@@ -46,7 +46,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     manipulate! do |img|
       img.combine_options do |cmd|
         cmd.gravity "north"
-        cmd.extent "200x400"
+        cmd.extent "150x300"
       end
 
       img = img.composite(::MiniMagick::Image.open(model.image.thumb_gray.current_path, "jpg")) do |c|

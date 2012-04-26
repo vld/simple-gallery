@@ -1,4 +1,4 @@
-%h1= @image.title
+%span
+  %h2=@image.title
+  %a{:href => '/'}='<< back to gallery'
 %img{:src => @image.image}
-%br
-%a{:href => '/'}='Photo gallery'
